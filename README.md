@@ -1,6 +1,6 @@
 # Simple Build Scripts Framework
 
-This is a simplified version of [Build Scripts Framework]()
+This is a simplified version of [Build Scripts Framework](https://github.com/cattz/build_scripts_framework)
 The idea is to run build scripts that can be configured via a yaml file like this:
 
 ```yaml
