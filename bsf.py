@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 from argparse import ArgumentParser
 import yaml
 import sys

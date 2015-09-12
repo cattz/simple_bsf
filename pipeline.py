@@ -1,4 +1,8 @@
-"""Pipeline classes"""
+"""Pipeline classes
+We have a basic pipeline class with the minimum config.
+Additional classes extend the functionality and initialize different parts as needed
+This allows to use the required functionality and group related methods together
+"""
 
 import os
 import sys
@@ -38,11 +42,13 @@ class ReleaseWorker(Pipeline):
     def __init__(self, source):
         super(ReleaseWorker, self).__init__(source)
 
-    def publish(self, path):
-        print 'ReleaseWorker: Publishing to %s' % path
+    def publish(self, path, repo):
+        print 'ReleaseWorker: Publishing to %s in %s' % (path, repo)
+        # self.pipeline.binary_repo.publish(path, repo)
 
     def promote(self, repo):
         print 'ReleaseWorker: Promoting to %s' % repo
+        # self.pipeline.binary_repo.promote(repo)
 
     def send_email(self, recipient):
         print 'Sending email to %s' % recipient

@@ -37,6 +37,7 @@ class Runner(object):
 
             step_method = getattr(self.pipeline, step_name)        # Get the method
             valid_args = inspect.getargspec(step_method).args[1:]  # See what arguments from task config are applicable
+            print valid_args
             # Compute step config
             step_resulting_config = self.config
             step_resulting_config.update(step_config)

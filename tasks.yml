@@ -1,10 +1,11 @@
-
-release:
+---
+release:  # This is a 'runner' or group of related tasks. They share common initialization needs
   config:
-    some_param: some_value
-  tasks:
+    repo: ci-repo  # Configuration parameters can be set at runner level and overriden by nested tasks/steps
+  tasks:  # List of tasks provided by this runner. We can run one task at a time
+
     publish:
-      config:
+      config: # Tasks can have configuration parameters
         properties:
           moo: maa
           shoo: shaa
@@ -13,11 +14,7 @@ release:
             path: org/path
 
     promote:
-      config:
-        properties:
-          moo: mee
-          koo: keee
-      steps:
+      steps:  # Tasks can have many steps that will run sequentially
         - promote:
             repo: promotion-repo
         - send_email:
