@@ -1,0 +1,24 @@
+
+release:
+  config:
+    some_param: some_value
+  tasks:
+    publish:
+      config:
+        properties:
+          moo: maa
+          shoo: shaa
+      steps:
+        - publish:
+            path: org/path
+
+    promote:
+      config:
+        properties:
+          moo: mee
+          koo: keee
+      steps:
+        - promote:
+            repo: promotion-repo
+        - send_email:
+            recipient: group@mycompany.com
