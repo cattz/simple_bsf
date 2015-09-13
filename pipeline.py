@@ -11,6 +11,9 @@ import sys
 class Pipeline(object):
     """Base pipeline class, in charge of the minimal configuration
     """
+
+    name = None
+
     def __init__(self, source):
         self.source = source  #: Source code folder
         self.build_number = os.environ.get('bamboo_buildNumber')
@@ -39,6 +42,9 @@ class Pipeline(object):
 class ReleaseWorker(Pipeline):
     """Extends the Pipeline with release tasks
     """
+
+    name = 'release'
+
     def __init__(self, source):
         super(ReleaseWorker, self).__init__(source)
 

@@ -51,6 +51,8 @@ class Runner(object):
 
 class Release(Runner):
 
+    name = 'release'
+
     def configure(self):
         self.pipeline = ReleaseWorker(source=self.source)
         self.pipeline.binary_repo = 'Foo'  # This should be an object from some manager class

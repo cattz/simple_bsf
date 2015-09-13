@@ -1,4 +1,3 @@
-  ---
   release:  # This is a 'runner' or group of related tasks. They share common initialization needs
     config:
       repo: ci-repo  # Configuration parameters can be set at runner level and overriden by nested tasks/steps

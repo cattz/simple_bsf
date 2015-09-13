@@ -3,7 +3,6 @@
 from argparse import ArgumentParser
 import yaml
 import sys
-import importlib
 from runners import *  # Need to import all runners
 
 
@@ -20,21 +19,17 @@ def get_config(cfg):
         return yaml.load(stream)
 
 
-def get_runner_class(runner, module='runners'):
+def get_runner_class(runner):
     """
     Returns the runner class specified byt the runner name
-    :param runner: string with runner class name
-    :param module: module where to search for runner classes
-    :return: runner class
+    :param runner: string with runner name
+    :return: runner class or None if not found
     """
-    runners = inspect.getmembers(sys.modules[module], inspect.isclass)  # Returns classes in module
-    runner_list = dict()
+    runners = Runner.__subclasses__()
     for rn in runners:
-        runner_class_name, runner_class_object = rn
-        runner_name = str(runner_class_name.lower())  # Convert class name to lowercase, maybe better to use a class prop
-        # dict with lower case task name and proper class name capitalization
-        runner_list[runner_name] = runner_class_name
-    return getattr(importlib.import_module(module), runner_list[runner])
+        if rn.name == runner:
+            return rn
+    return None
 
 
 def get_resulting_task_config(default_tasks, runner_config, task_config):
